@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>xyf's key</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	#div1{
+		width: 500px;
+		height: 500px;
+		background:#ccc ;
+		-moz-transition:3s;
+		-webkit-transition:3s;
+		overflow: hidden;
+		
+	}
+	
+	#div2{
+		width: 200px;
+		height: 200px;
+		border-right: 2px red solid;
+		/*border-left: 2px red solid;*/
+		-moz-transition: 1s;
+		-webkit-transition: 1s;
+		overflow: hidden;
+		-moz-transform: translate(150px,-250px);
+		-webkit-transform: translate(150px,-250px);
+	}
+	#div1:hover #div2{
+		-moz-transform:translate(150px,100px);
+		-webkit-transform:translate(150px,100px);
+	}
+	#div3{
+		width: 200px;
+		height: 200px;
+		border-top: 2px  black solid;
+		-moz-transition:2s;
+		-webkit-transition:2s;
+		overflow: hidden;
+		-moz-transform:translate(-310px,-100px);
+		-webkit-transform:translate(-310px,-100px);
+	}
+	#div1:hover #div3{
+		-moz-transform:translate(150px,-100px);
+		-webkit-transform:translate(150px,-100px);
+
+	}
+	#div4{
+		width: 200px;
+		height: 200px;
+		border-bottom: 2px purple solid;
+		-moz-transition:1s;
+		-webkit-transition:1s;
+		overflow: hidden;
+		-moz-transform:translate(-200px,-300px);
+		-webkit-transform:translate(-200px,-300px);
+	}
+	#div1:hover #div4{
+		-moz-transform:translate(150px,-300px);
+		-webkit-transform:translate(150px,-300px);
+
+	}
+	#div5{
+		width: 200px;
+		height: 200px;
+		border-left: 2px  green solid;
+		-moz-transition:1s;
+		-webkit-transition:1s;
+		overflow: hidden;
+		-moz-transform:translate(150px,300px);
+		-webkit-transform:translate(150px,300px);
+	}
+	#div1:hover #div5{
+		-moz-transform:translate(150px,-500px);
+		-webkit-transform:translate(150px,-500px);
+
+	}
+	
+</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2" ></div>
+		<div id="div3" ></div>
+		<div id="div4" ></div>
+		<div id="div5" ></div>
+	</div>
+
+</body>
+</html>
