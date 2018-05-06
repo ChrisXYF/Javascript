@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表格的增删查改</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oTab=document.getElementById('tab1');
+			var oBtn=document.getElementById('btn1');
+			var oName=document.getElementById('name');
+			var oAge=document.getElementById('age');
+            var oTxt=document.getElementById('txt2');
+            var oBtn2=document.getElementById('btn2');
+            var id=oTab.tBodies[0].rows.length+1;
+			oBtn.onclick=function()
+			{
+				var oTr=document.createElement('tr');
+                var oTd=document.createElement('td');
+                oTd.innerHTML=id++;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML=oName.value;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML=oAge.value;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML='<a href="javascript:;">删除</a>'
+                oTr.appendChild(oTd);
+
+                oTd.getElementsByTagName('a')[0].onclick=function()
+                {
+                oTab.tBodies[0].removeChild(this.parentNode.parentNode)
+                }
+
+                oTab.tBodies[0].appendChild(oTr);
+			}
+			oBtn2.onclick=function()
+			{
+				for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+				{
+					var sTab=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+					var sTxt=oTxt.value.toLowerCase();
+                   
+                    var arr=sTxt.split('');
+					oTab.tBodies[0].rows[i].style.background='';
+					for(var j=0;j<arr.length;j++)
+					{
+					if(sTab.search(arr[j])!=-1)
+					{
+						oTab.tBodies[0].rows[i].style.background='yellow';
+
+					}
+					}
+
+			}
+		}
+			}
+	</script>
+<body>
+	姓名：<input type="text" id="name" name="">
+	年龄：<input type="text" id="age" name="">
+	<input type="button" id="btn1" value="添加" name="">
+	搜索人名：<input type="text" name="" id="txt2">
+	<input type="button" value="搜索" name="" id="btn2">
+
+	<table border="1px" width="500px" id="tab1" style="margin-top: 20px;">
+		<thead>
+			<td>ID</td>
+			<td>姓名</td>
+			<td>年龄</td>
+			<td>操做</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>chris</td>
+				<td>19</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>科比</td>
+				<td>40</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>勒布朗</td>
+				<td>35</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>乔治</td>
+				<td>28</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>戴维斯</td>
+				<td>25</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
