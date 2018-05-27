@@ -1,3 +1,3 @@
 # Javascript
-this is my js‘ dome
-this is my js’ codes
+this is my js‘ demos
+
