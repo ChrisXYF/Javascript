@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>改变盒子样式</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#box{
+			width: 500px;
+			margin: 10px auto;
+			text-align: center;
+		}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: #ccc;
+			margin: 10px auto;
+		}
+	</style>
+	<script type="text/javascript">
+		var changStyle=function(elem,attr,value)
+		{
+            elem.style[attr]=value;
+            //elem.style.attr=value;//不能使用，因为此时attr是当作变量来用，而不是属性
+		}
+		window.onload=function()
+		{
+			var box=document.getElementById('box');
+			var oBtn=box.getElementsByTagName('input');
+			var oDiv=document.getElementById('div1');
+			var oAtt=["width","height","background","display","display"];
+			var oNum=["200px","200px","red","none","block"];
+
+			for(var i=0;i<oBtn.length;i++)
+			{
+				oBtn[i].index=i;
+				oBtn[i].onclick=function()
+				{
+					if(this.index==oBtn.length-1)
+						oDiv.style.cssText='';
+				changStyle(oDiv,oAtt[this.index],oNum[this.index]);
+				}
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="变宽" name="">
+		<input type="button" value="变高" name="">
+		<input type="button" value="变色" name="">
+		<input type="button" value="隐藏" name="">
+		<input type="button" value="重置" name="">
+       <div id="div1">
+       	
+       </div>
+	</div>
+
+</body>
+</html>

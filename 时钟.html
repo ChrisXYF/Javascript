@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>时钟</title>
+	<meta charset="utf-8">
+	<style>
+body,div{margin:0;padding:0;}
+body{color:#fff;font:16px/1.5 \5fae\8f6f\96c5\9ed1;}
+#clock{width:300px;text-align:center;background:#1a1a1a;margin:10px auto;padding:20px 0;}
+span{color:#000;width:80px;line-height:2;background:#fbfbfb;border:2px solid #b4b4b4;margin:0 10px;padding:0 10px;}
+</style>
+<script type="text/javascript">
+	window.onload=function()
+	{
+		var oDiv=document.getElementById('clock');
+		var oSpan=oDiv.getElementsByTagName('span');
+
+		setInterval(getTimes,1000);
+		getTimes();
+
+		function getTimes ()
+	{
+		var oDate = new Date();
+		var aDate = [oDate.getHours(), oDate.getMinutes(), oDate.getSeconds()];
+		for(var i=0;i<aDate.length;i++)
+		{
+			oSpan[i].innerHTML=format(aDate[i]);
+		}
+	}
+	function format(a)
+	{
+		if(a>=10){
+     return a;
+   }else{
+     return "0"+a;
+   }
+	}
+
+	}
+</script>
+</head>
+<body>
+	<div id="clock">
+	<span></span>点<span></span>分<span></span>秒
+</div>
+
+</body>
+</html>

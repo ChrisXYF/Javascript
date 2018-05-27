@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑马灯</title>
+    <style type="text/css">
+    body,div,img,ul,li{
+    	margin: 0;
+    	padding: 0;
+    }
+    #div1{
+    	width: 890px;
+    	height: 108px;
+    	margin: 200px auto;
+    	position: relative;
+    	overflow: hidden;
+    }
+    #div1 ul{
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    }
+    #div1 ul li{
+        float: left;
+        width: 178px;
+        height: 108px;
+        list-style: none;
+
+    }
+    #div1 img{
+    	width: 170px;
+    	height: 108px;
+    }
+   
+    </style>
+    <script type="text/javascript">
+    	window.onload=function()
+    	{
+    		var oDiv=document.getElementById('div1');
+    		var oUl=oDiv.getElementsByTagName('ul')[0];
+            var oLi=oDiv.getElementsByTagName('li');
+            var timer=null;
+            var speed=-2;
+
+            oUl.innerHTML+=oUl.innerHTML;
+            oUl.style.width=oLi[0].offsetWidth*oLi.length+'px';
+            
+            function smove(){
+                  if (oUl.offsetLeft<-oUl.offsetWidth/2)
+                   {
+                   	oUl.style.left='0';
+                   }
+                   if (oUl.offsetLeft>0)
+                    {
+                    	oUl.style.left=-oUl.offsetWidth/2+'px';
+                    }
+                   oUl.style.left=oUl.offsetLeft+speed+'px';
+            }
+    		timer=setInterval(smove,30);
+    
+    		oUl.onmouseover=function()
+    		{
+    			clearInterval(timer);
+    		}
+    		
+    		oUl.onmouseout=function()
+    		{
+    			timer=setInterval(smove,30);
+    		} 
+    		var oA1=document.getElementById('a1');   	
+    		var oA2=document.getElementById('a2'); 
+
+    		oA1.onclick=function()
+    		{
+    			speed=-3;
+    		}
+    		oA2.onclick=function()
+    		{
+    			speed=3;
+    		}
+    	}
+    </script>
+</head>
+<body>
+	<a href="javascript:;" id="a1">向左走</a>
+	<a href="javascript:;" id="a2">向右走</a>
+	<div id="div1">
+	<ul>
+       <li><img src="1.jpg"></li>
+       <li><img src="shuidi.jpg"></li>
+       <li><img src="1.jpg"></li>
+        <li><img src="shuidi.jpg"></li>
+         <li><img src="1.jpg"></li>
+		
+	</ul>
+</div>
+
+</body>
+
+</html>

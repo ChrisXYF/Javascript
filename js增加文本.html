@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js增加文本</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#div1{
+			border: 1px solid;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var para=document.createElement("p");
+			var txt1=document.createTextNode("you are");
+			var eM=document.createElement('em');
+			var txt2=document.createTextNode("my");
+			var txt3=document.createTextNode("son");
+			para.appendChild(txt1);
+			para.appendChild(eM);
+			eM.appendChild(txt2);
+			para.appendChild(txt3);
+			var oDiv=document.getElementById('div1');
+			oDiv.appendChild(para);
+
+		}
+	</script>
+</head>
+<body>
+	<div id='div1'></div>
+
+</body>
+</html>

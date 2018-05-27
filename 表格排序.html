@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表格排序</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		window.onload=function()
+		{
+			var oBtn=document.getElementById('btn');
+			var oTab=document.getElementById('tab1');
+
+			oBtn.onclick=function()
+			{
+				var arr=[]
+
+				for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+				{
+					arr[i]=oTab.tBodies[0].rows[i];
+				}
+				arr.sort(function(tr1,tr2)
+				{
+				var n1=parseInt(tr1.cells[0].innerHTML);
+				var n2=parseInt(tr2.cells[0].innerHTML);
+
+					return n1-n2;
+				})
+
+				for(var i=0;i<arr.length;i++)
+				{
+					oTab.tBodies[0].appendChild(arr[i]);
+				}
+			}
+		}; 
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" name="" value="排序">
+	<table border="1px" id="tab1">
+		<thead>
+				<td>num</td>
+				<td>name</td>
+		</thead>
+		<tbody>
+			<tr>
+				<td>3</td>
+				<td>kobe</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>jordan</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>james</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>allen</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>chris</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>weda</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

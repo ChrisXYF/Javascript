@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>选项卡</title>
+	<meta charset="utf-8"></meta>
+	<style type="text/css">
+		.active{
+                 background: pink;
+ 		}
+ 		#div1 input{
+ 			outline: none;
+ 		}
+ 		#div1 div{
+ 			width: 200px;
+ 			height: 300px;
+ 			background: #ccc;
+ 			display: none;
+ 		}
+
+	</style>
+	<script type="text/javascript">
+		window.onload=function()
+		{
+                var oDiv=document.getElementById('div1');
+                var aBtn=oDiv.getElementsByTagName('input');
+                var aDiv=oDiv.getElementsByTagName('div');
+
+                for(var i=0;i<aBtn.length;i++)
+                {
+                	aBtn[i].index=i;
+                	aBtn[i].onclick=function()
+                	{
+                	for(var j=0;j<aBtn.length;j++)
+                	{
+                         aBtn[j].className='';
+                         aDiv[j].style.display='none';
+                	}
+                		this.className='active';
+                		aDiv[this.index].style.display='block';
+
+                	}
+       }
+   }		
+	</script>
+
+
+</head>
+<body>
+	<div id="div1">
+		<input type="button" name="" value="one" class="active" >
+	<input type="button" name="" value="two">
+	<input type="button" name="" value="three">
+	<input type="button" name="" value="four">
+	<div style="display: block;">one</div>
+	<div>two</div>
+	<div>three</div>
+	<div>four</div>
+	</div>
+
+</body>
+</html>

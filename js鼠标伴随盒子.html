@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js鼠标跟随块</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			position: absolute;
+		}
+		div img{
+			width: 30px;
+			height: 30px;
+		}
+	</style>
+	<script type="text/javascript">
+		document.onmousemove=function(ev)
+			{
+			var oDiv=document.getElementsByTagName('div');
+			var oEvent=ev||event;
+
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+
+				for (var i=oDiv.length-1;i>0;i--)
+				{
+                   oDiv[i].style.left=oDiv[i-1].offsetLeft+'px';
+                   oDiv[i].style.top=oDiv[i-1].offsetTop+'px';
+
+				}
+				oDiv[0].style.left=oEvent.clientX+scrollLeft+'px';
+				oDiv[0].style.top=oEvent.clientY+scrollTop+'px';
+			}
+		
+	</script>
+</head>
+<body>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+	<div><img src="shuidi.jpg"></div>
+
+</body>
+</html>
