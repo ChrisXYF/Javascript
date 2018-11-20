@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="XiaYufeng">
     <title>日历</title>
     <style>
         * {
@@ -50,7 +51,7 @@
         }
 
         #date li:hover {
-            color: yellow
+            color: pink
         }
 
         .active {
@@ -115,6 +116,7 @@
     let arr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
     pre.onclick = function() {
+        let t=1;
         next.removeAttribute('disabled')
         for (let i = 0; i < 3; i++) {
             if (yearShow.options[i].selected == true && yearShow.options[i].value == 2017) {
@@ -123,15 +125,22 @@
                         alert('只显示2017~2019年');
                         pre.setAttribute('disabled',true);
                     }
+                    if (mouthShow.options[j].selected == true && mouthShow.options[j].value == 1) {
+                        alert('只显示2017~2019年');
+                        pre.setAttribute('disabled',true);
+                        t=0;
+                    }
                 }
             }
         }
+        if(t==1){
         now.setMonth(now.getMonth() - 1);
         calendar()
+        }
     }
     next.onclick = function () {
         pre.removeAttribute('disabled')
-
+        let t=1;
         for (let i = 0; i < 3; i++) {
             if (yearShow.options[i].selected == true && yearShow.options[i].value == 2019) {
                 for (let j = 0; j < 12; j++) {
@@ -139,11 +148,17 @@
                         alert('只显示2017~2019年');
                         next.setAttribute('disabled',true);
                     }
+                    if (mouthShow.options[j].selected == true && mouthShow.options[j].value ==12) {
+                        next.setAttribute('disabled',true);
+                        t=0;
+                    }
                 }
             }
         }
+        if(t==1){
         now.setMonth(now.getMonth() + 1);
         calendar();
+        }
         
     }
     today.onclick = function () {
@@ -197,7 +212,7 @@
                 now.setFullYear(yearShow.options[i].value)
                 calendar()
             }
-        }
+    }
     }
 </script>
 
