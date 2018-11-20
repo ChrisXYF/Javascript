@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日历</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #main {
+            margin: 10px auto;
+            width: 310px;
+            border: 1px solid;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .head {
+            margin-top: 10px;
+        }
+
+        .head button {
+            width: 50px;
+            margin-left: 2px;
+        }
+
+        .weeks {
+            margin-top: 10px;
+            overflow: hidden;
+            list-style: none;
+        }
+
+        #weekTitle {
+            background: lightblue;
+        }
+
+        .weeks li {
+            float: left;
+            width: 35px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            margin-left: 5px;
+            /* border: 1px solid */
+        }
+
+        #date li:hover {
+            color: yellow
+        }
+
+        .active {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <p class="head">
+            <select name="" id="year">
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+            </select>
+            年
+            <select name="" id="mouth">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            月
+            <button id="next">下个月</button>
+            <button id="pre">上个月</button>
+            <button id="today">今天</button>
+        </p>
+        <p class="week">
+            <ul class="weeks" id="weekTitle">
+                <li>日</li>
+                <li>一</li>
+                <li>二</li>
+                <li>三</li>
+                <li>四</li>
+                <li>五</li>
+                <li>六</li>
+            </ul>
+            <ul id="date" class="weeks">
+
+            </ul>
+        </p>
+    </div>
+</body>
+<script>
+    let yearShow = document.getElementById('year');
+    let mouthShow = document.getElementById('mouth');
+    let next = document.getElementById('next');
+    let pre = document.getElementById('pre');
+    let today = document.getElementById('today');
+    let date = document.getElementById('date');
+
+    let now = new Date(); //当前时间 
+    let arr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+
+    pre.onclick = function() {
+        next.removeAttribute('disabled')
+        for (let i = 0; i < 3; i++) {
+            if (yearShow.options[i].selected == true && yearShow.options[i].value == 2017) {
+                for (let j = 0; j < 12; j++) {
+                    if (mouthShow.options[j].selected == true && mouthShow.options[j].value == 2) {
+                        alert('只显示2017~2019年');
+                        pre.setAttribute('disabled',true);
+                    }
+                }
+            }
+        }
+        now.setMonth(now.getMonth() - 1);
+        calendar()
+    }
+    next.onclick = function () {
+        pre.removeAttribute('disabled')
+
+        for (let i = 0; i < 3; i++) {
+            if (yearShow.options[i].selected == true && yearShow.options[i].value == 2019) {
+                for (let j = 0; j < 12; j++) {
+                    if (mouthShow.options[j].selected == true && mouthShow.options[j].value ==11) {
+                        alert('只显示2017~2019年');
+                        next.setAttribute('disabled',true);
+                    }
+                }
+            }
+        }
+        now.setMonth(now.getMonth() + 1);
+        calendar();
+        
+    }
+    today.onclick = function () {
+        now = new Date()
+        calendar()
+    }
+    calendar();
+
+    function calendar() {
+        let year = now.getFullYear();
+        let mouth = now.getMonth(); //比实际小一
+        let day = now.getDate();
+        date.innerHTML = ''
+        for (let i = 0; i < yearShow.options.length; i++) {
+            if (yearShow.options[i].value == year) {
+                yearShow.options[i].selected = true;
+            }
+        }
+        for (var i = 0; i < mouthShow.options.length; i++) {
+            if (mouthShow.options[i].value == arr[mouth]) {
+                mouthShow.options[i].selected = true;
+            }
+        }
+        let newDate = new Date(year, mouth + 1, 1 - 1);
+        let newDay = newDate.getDate(); //获取当月最后一天是几号
+        let newWeek = new Date(year, mouth, 1).getDay(); //当月第一天的周几
+
+        for (let j = 0; j < newWeek; j++) {
+            var k = document.createElement('li');
+            date.appendChild(k)
+        }
+        for (let k = 1; k <= newDay; k++) {
+            let t = document.createElement('li');
+            t.innerHTML = k;
+            date.appendChild(t);
+            if (t.innerHTML == day) {
+                t.className = "active"
+            }
+        }
+    }
+    mouthShow.onchange = function () {
+        for (let i = 0; i < 12; i++)
+            if (mouthShow.options[i].selected == true) {
+                now.setMonth(i)
+                calendar()
+            }
+    }
+    yearShow.onchange = function () {
+        for (let i = 0; i < 3; i++) {
+            if (yearShow.options[i].selected == true) {
+                now.setFullYear(yearShow.options[i].value)
+                calendar()
+            }
+        }
+    }
+</script>
+
+</html>
